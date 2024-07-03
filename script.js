@@ -15,10 +15,10 @@ function render() {
             let cellClass = '';
 
             if (fields[index] === 'cross') {
-                value = 'X';
+                value = generateCrossSVG();
                 cellClass = 'cross';
             } else if (fields[index] === 'circle') {
-                value = 'O';
+                value = generateCircleSVG();
                 cellClass = 'circle';
             }
 
