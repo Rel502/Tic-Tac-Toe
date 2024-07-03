@@ -1,56 +1,40 @@
 function init() {
-    renderFood();
+    render();
 }
 
+function render() {
+    let content = document.getElementById('content');
+    let tableHTML = '<table class="tic-tac-toe">';
 
+    for (let i = 0; i < 3; i++) {
+        tableHTML += '<tr>';
 
-// function renderFood() {
-//     let content = document.getElementById('content');
-//     content.innerHTML = '';
+        for (let j = 0; j < 3; j++) {
+            const index = i * 3 + j;
+            let value = '';
+            let cellClass = '';
 
-//     for (let i = 0; i < food.length; i++) {
-//         const foodObj = food[i];
-//         const category = foodObj['category'];
-//         const prices = foodObj['prices']
+            if (fields[index] === 'cross') {
+                value = 'X';
+                cellClass = 'cross';
+            } else if (fields[index] === 'circle') {
+                value = 'O';
+                cellClass = 'circle';
+            }
 
-//         content.innerHTML += returnFood(category, i);
-//         renderCategoryImage(i);
+            tableHTML += `<td class="${cellClass}" onclick="makeMove(${index})">${value}</td>`;
+        }
 
-//         for (let j = 0; j < foodObj['dishes'].length; j++) {
-//             const dish = foodObj['dishes'][j];
-//             const price = foodObj['prices'][j];
-//             content.innerHTML += returnDishes(dish, price);
-//         }
-//     }
-// }
+        tableHTML += '</tr>';
+    }
 
-// ----------------------------------------------------
-
-function returnFood(category, i) {
-    return /*html*/`
-        <div id="bgImg${i}" class="category-img">
-            <h3>${category}</h3>
-        </div>
-    `;
+    tableHTML += '</table>';
+    content.innerHTML = tableHTML;
 }
 
-// -----------------------------------------------------
-
-
-
-
-
-
-// function returnDishes(dish, price) {
-//     return /*html*/`
-//         <div class="card">
-//             <div>${dish}</div>
-//             <div>${price}</div>
-//         </div>
-//     `;
-// }
-
-function renderCategoryImage(i) {
-    let container = document.getElementById(`bgImg${i}`);
-    // -> background-image: url() --> change
+function makeMove(index) {
+    if (fields[index] === null) {
+        fields[index] = 'X'; // Beispiel: Spieler X macht einen Zug
+        render();
+    }
 }
