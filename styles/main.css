@@ -3,6 +3,14 @@ body {
     font-family: 'Open Sans', sans-serif; /* Schriftart Open Sans */
 }
 
+h1 {
+    text-align: center;
+    filter: drop-shadow(-1px -2px 0px white);
+    margin-bottom: 96px;
+    font-size: 44px;
+    color: #001723d6;
+}
+
 /* GUI (TABLE) */
 .tic-tac-toe {
     border-collapse: collapse;

@@ -1,3 +1,5 @@
+let currentPlayer = 'circle';
+
 function init() {
     render();
 }
@@ -22,7 +24,13 @@ function render() {
                 cellClass = 'circle';
             }
 
-            tableHTML += `<td class="${cellClass}" onclick="makeMove(${index})">${value}</td>`;
+            tableHTML += `
+                <td id="cell${index}"
+                    class="${cellClass}" 
+                    onclick="makeMove(${index})">
+                    ${value}
+                </td>
+            `;
         }
 
         tableHTML += '</tr>';
@@ -33,8 +41,26 @@ function render() {
 }
 
 function makeMove(index) {
+    let selectedCell = document.getElementById(`cell${index}`);
+
     if (fields[index] === null) {
-        fields[index] = 'X'; // Beispiel: Spieler X macht einen Zug
-        render();
+        if (currentPlayerIsCircle()) {
+            fields[index] = 'circle';
+            selectedCell.innerHTML = generateCircleSVG();
+            currentPlayer = 'cross';
+        } else {
+            fields[index] = 'cross';
+            selectedCell.innerHTML = generateCrossSVG();
+            currentPlayer = 'circle';
+        }
+        addCellClass(selectedCell);
     }
+}
+
+function addCellClass(selectedCell) {
+    selectedCell.classList.add(currentPlayer === 'circle' ? 'cross' : 'circle');
+}
+
+function currentPlayerIsCircle() {
+    return currentPlayer === 'circle';
 }
