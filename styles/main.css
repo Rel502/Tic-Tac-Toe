@@ -1,6 +1,7 @@
 body {
     background-color: #333; /* Dunkelgraue Hintergrundfarbe */
     font-family: 'Open Sans', sans-serif; /* Schriftart Open Sans */
+    overflow: hidden;
 }
 
 h1 {
@@ -46,4 +47,12 @@ h1 {
 
 .circle {
     color: lightblue;
+}
+
+.winning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
