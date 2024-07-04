@@ -1,0 +1,17 @@
+button {
+    padding: 12px 24px;
+    color: white;
+    background-color: #006c90;
+    border: none;
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.3));
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #00465e;
+}
+
+button:disabled {
+    background-color: grey;
+}
